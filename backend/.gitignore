@@ -10,7 +10,6 @@
 *~
 .#*
 .*.md.html
-.DS_Store
 .classpath
 .factorypath
 .gradle
