@@ -9,7 +9,7 @@ jobs:
 
     steps: 
 
-      - checkout
+      - checkout:
           path: ~/repo
 
       - restore_cache:
