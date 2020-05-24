@@ -1,0 +1,31 @@
+version: 2.1
+jobs: 
+  build: 
+
+    working_directory: ~/repo/backend
+
+    docker: 
+      - image: circleci/openjdk:8-jdk-stretch 
+
+    steps: 
+
+      - checkout
+          path: ~/repo
+
+      - restore_cache:
+          key: chops-{{ checksum "pom.xml" }}
+
+      - run: mvn dependency:go-offline 
+
+      - save_cache: 
+          paths:
+            - ~/.m2
+          key: chops-{{ checksum "pom.xml" }}
+
+      - run: mvn package 
+
+      - store_test_results: 
+          
+          path: target/surefire-reports
+
+      
