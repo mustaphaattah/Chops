@@ -1,5 +1,14 @@
 version: 2.1
-jobs: 
+jobs:
+  silly_boy:
+
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+
+    steps:
+
+      - run: echo silly boy
+
   build: 
 
     working_directory: ~/repo/backend
@@ -28,4 +37,10 @@ jobs:
           
           path: target/surefire-reports
 
-      
+
+
+workflow:
+  testing:
+    jobs:
+      - silly_boy
+      - build
