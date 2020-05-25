@@ -3,11 +3,11 @@ jobs:
   silly_boy:
 
     docker:
-      - image: circleci/openjdk:8-jdk-stretch
+      - image: circleci/node:4.8.2
 
     steps:
       - checkout
-      - run: echo silly boy
+      - run: echo "silly boy"
 
   build: 
 
@@ -39,7 +39,7 @@ jobs:
 
 
 
-workflow:
+workflows:
   testing:
     jobs:
       - silly_boy
