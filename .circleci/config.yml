@@ -1,14 +1,5 @@
 version: 2.1
 jobs:
-  silly_boy:
-
-    docker:
-      - image: circleci/node:4.8.2
-
-    steps:
-      - checkout
-      - run: echo "silly boy"
-
   build: 
 
     working_directory: ~/repo/backend
@@ -36,11 +27,3 @@ jobs:
       - store_test_results: 
           
           path: target/surefire-reports
-
-
-
-workflows:
-  testing:
-    jobs:
-      - silly_boy
-      - build
