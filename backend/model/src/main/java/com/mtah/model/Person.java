@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @MappedSuperclass
 @Data
