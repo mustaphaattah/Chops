@@ -16,5 +16,6 @@ public class Order extends BaseEntity{
      */
     private Long total;
     private String specialInstructions;
+    private Status status;
 
 }
