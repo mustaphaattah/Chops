@@ -11,6 +11,8 @@ import javax.validation.constraints.NotNull;
 @Data
 public class NamedEntity extends BaseEntity{
 
-    private String firstName;
-    private String lastName;
+    @NotNull @NotEmpty
+    private String username;
+    @NotNull @NotEmpty
+    private String profileId;
 }

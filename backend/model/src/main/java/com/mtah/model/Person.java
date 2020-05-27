@@ -10,15 +10,13 @@ import javax.validation.constraints.NotNull;
 @Data
 public class Person extends NamedEntity{
 
+    private String firstName;
+    private String lastName;
     private String dateCreated;
     private String lastUpdate;
-    @NotNull @NotEmpty
-    private String username;
     @NotNull @NotEmpty
     private String email;
     @NotNull @NotEmpty
     private String password;
-    @NotNull @NotEmpty
-    private String profileId;
 
 }
