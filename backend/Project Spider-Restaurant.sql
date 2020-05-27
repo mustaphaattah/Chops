@@ -47,3 +47,21 @@ TABLE MENU_ITEM (
   price VARCHAR,
   image VARCHAR,
 )
+
+TABLE ORDER(
+    chefId FOREIGN KEY,
+    customerId FOREIGN KEY,
+    dateCreated VARCHAR,
+    dateCompleted VARCHAR,
+    status ENUM(pending, confirmed, canceled),
+    orderItems FOREIGN KEY,
+    total,
+    speacial instructions
+)
+
+TABLE ORDER_ITEM (
+    name,
+    price,
+    quantity,
+    speacial instructions
+)
