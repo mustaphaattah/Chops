@@ -1,11 +1,15 @@
-package com.mtah.model;
+package com.mtah.model.Order;
 
+import com.mtah.model.BaseEntity;
+import com.mtah.model.Chef;
+import com.mtah.model.Customer;
+import com.mtah.model.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Order extends BaseEntity{
+public class Order extends BaseEntity {
 
     private Chef chef;
     private Customer customer;
