@@ -1,9 +1,10 @@
 package com.mtah.model.Order;
 
-import com.mtah.model.NamedEntity;
 import lombok.Data;
 
 @Data
-public class OrderItem  {
+public class OrderItem {
 
+    private int quantity;
+    private String specialInstructions;
 }
