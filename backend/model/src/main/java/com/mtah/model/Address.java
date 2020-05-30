@@ -3,9 +3,14 @@ package com.mtah.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
+@Embeddable
 @Data
 @AllArgsConstructor
 public class Address extends BaseEntity{

@@ -4,11 +4,12 @@ import com.mtah.model.Chef;
 import com.mtah.model.NamedEntity;
 import lombok.Data;
 
+import javax.persistence.Entity;
 import java.util.List;
 
+@Entity
 @Data
 public class MenuCategory extends NamedEntity {
 
-    private Chef chef;
     private List<MenuItem> menuItems;
 }

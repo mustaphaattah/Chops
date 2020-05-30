@@ -60,7 +60,7 @@ TABLE ORDER(
 )
 
 TABLE ORDER_ITEM (
-    name,
+    name FOREIGN KEY ,
     price,
     quantity,
     special instructions

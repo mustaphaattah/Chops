@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 public class NamedEntity extends BaseEntity{
 
     @NotNull @NotEmpty
-    private String username;
+    private String name;
     @NotNull @NotEmpty
     private String profileId;
 }

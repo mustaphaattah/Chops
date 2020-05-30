@@ -6,7 +6,6 @@ import lombok.Data;
 import javax.persistence.Entity;
 
 @Data
-@Entity
 public class MenuItem extends Item {
 
     private String description;
