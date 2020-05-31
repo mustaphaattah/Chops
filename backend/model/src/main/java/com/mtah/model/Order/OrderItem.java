@@ -1,17 +1,21 @@
 package com.mtah.model.Order;
 
-import com.mtah.model.Menu.MenuItem;
-import com.mtah.model.NamedEntity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
-import javax.persistence.*;
-import java.util.jar.Attributes;
+import lombok.AllArgsConstructor;
+import com.mtah.model.Item;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-public class OrderItem extends NamedEntity {
+public class OrderItem extends Item {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Order order;

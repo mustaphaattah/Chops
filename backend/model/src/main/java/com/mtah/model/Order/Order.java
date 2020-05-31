@@ -14,6 +14,7 @@ import java.util.List;
 @Entity
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Order extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -27,7 +28,8 @@ public class Order extends BaseEntity {
 
     private String dateCreated;
     private String dateCompleted;
-    private Long total;
+
+    private double total;
     private String specialInstructions;
     private Status status;
 

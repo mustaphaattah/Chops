@@ -54,6 +54,7 @@ TABLE ORDER(
     dateCreated VARCHAR,
     dateCompleted VARCHAR,
     status ENUM(pending, confirmed, canceled),
+    completed BOOLEAN,
     orderItems FOREIGN KEY,
     total,
     speacial instructions

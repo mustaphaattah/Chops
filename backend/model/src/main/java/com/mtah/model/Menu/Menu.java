@@ -5,6 +5,7 @@ import com.mtah.model.Chef;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.List;
 
@@ -12,7 +13,9 @@ import java.util.List;
 @Data
 public class Menu extends BaseEntity {
 
-    @OneToOne
+    @OneToOne(mappedBy = "menu")
     private Chef chef;
+
+    @OneToMany(mappedBy = "menu")
     private List<MenuCategory> categories;
 }
