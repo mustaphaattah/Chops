@@ -12,7 +12,7 @@ import javax.validation.constraints.Pattern;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Address extends BaseEntity{
+public class Address {
 
     @NotEmpty(message = "Postal Code is required")
     @Pattern(regexp = "^[A-Z][0-9][A-Z] [0-9][A-Z][0-9]$", message = "Postal Code must match format: A1A 1A1")

@@ -1,13 +1,13 @@
 package com.mtah.model.Order;
 
 
-import lombok.AllArgsConstructor;
 import com.mtah.model.Item;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
@@ -17,7 +17,8 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class OrderItem extends Item {
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(nullable=false)
     private Order order;
 
     private int quantity;

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -21,6 +22,6 @@ public class Chef extends Person {
     @OneToOne
     private Menu menu;
 
-    @OneToMany(mappedBy = "chef")
-    private List<Order> ordersReceived;
+    @OneToMany(mappedBy = "chef", cascade = CascadeType.ALL)
+    private List<Order> orders;
 }

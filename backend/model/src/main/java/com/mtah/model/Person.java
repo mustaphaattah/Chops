@@ -5,19 +5,16 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDate;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@MappedSuperclass
 @Data
-public class Person extends NamedEntity{
+@MappedSuperclass
+public class Person extends BaseEntity {
 
     private String firstName;
     private String lastName;
-    private String dateCreated;
-    private String lastUpdate;
+    private LocalDate dateCreated;
+    private LocalDate lastUpdate;
 
     @NotNull @NotEmpty
     private String username;
