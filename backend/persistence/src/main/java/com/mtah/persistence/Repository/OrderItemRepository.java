@@ -1,9 +1,9 @@
 package com.mtah.persistence.Repository;
 
-import com.mtah.model.Menu.Menu;
+import com.mtah.model.Order.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MenuRepository extends JpaRepository<Menu, Long> {
+public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 }
