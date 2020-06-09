@@ -1,14 +1,18 @@
 package com.mtah.persistence.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public interface EntityService<T, ID> {
+public abstract class EntityService<T, ID> {
 
-    List<T> findAll();
+    public List<T> findAll() {
+        List<T> items = new ArrayList<T>();
+        return items;
+    }
 
-    T findById(ID id);
+    public abstract T findById(Long id);
 
-    void deleteById(ID id);
+    public abstract void deleteById(Long id);
 
-    T save(T object);
+    public abstract T save(T t);
 }

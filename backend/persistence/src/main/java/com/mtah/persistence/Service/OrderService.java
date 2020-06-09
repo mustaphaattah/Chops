@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderService implements EntityService<Order, Long> {
+public class OrderService extends EntityService<Order, Long> {
 
     private final OrderRepository orderRepository;
 

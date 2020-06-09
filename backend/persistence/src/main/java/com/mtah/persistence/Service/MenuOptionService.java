@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MenuOptionService implements EntityService<MenuOption, Long> {
+public class MenuOptionService extends EntityService<MenuOption, Long> {
 
     private final MenuOptionRepository menuOptionRepository;
 

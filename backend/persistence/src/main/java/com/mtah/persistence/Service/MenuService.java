@@ -4,10 +4,8 @@ import com.mtah.model.Menu.Menu;
 import com.mtah.persistence.Repository.MenuRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class MenuService implements EntityService<Menu, Long>{
+public class MenuService extends EntityService<Menu, Long> {
 
     private final MenuRepository menuRepository;
 
@@ -15,15 +13,9 @@ public class MenuService implements EntityService<Menu, Long>{
         this.menuRepository = menuRepository;
     }
 
-
-    @Override
-    public List<Menu> findAll() {
-        return menuRepository.findAll();
-    }
-
     @Override
     public Menu findById(Long id) {
-        return menuRepository.findById(id).orElse(null);
+        return menuRepository.findByChefId(id).orElse(null);
     }
 
     @Override

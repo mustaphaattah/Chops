@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ChefService implements EntityService<Chef, Long> {
+public class ChefService extends EntityService<Chef, Long> {
 
     private final ChefRepository chefRepository;
 
