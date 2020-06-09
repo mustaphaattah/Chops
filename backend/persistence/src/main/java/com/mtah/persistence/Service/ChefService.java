@@ -15,12 +15,10 @@ public class ChefService extends EntityService<Chef, Long> {
         this.chefRepository = cr;
     }
 
-    @Override
     public Chef findById(Long id) {
         return chefRepository.findById(id).orElse(null);
     }
 
-    @Override
     public List<Chef> findAll() {
         return chefRepository.findAll();
     }

@@ -15,12 +15,10 @@ public class MenuItemService extends EntityService<MenuItem, Long> {
         this.menuItemRepository = menuItemRepository;
     }
 
-    @Override
     public List<MenuItem> findAll() {
         return menuItemRepository.findAll();
     }
 
-    @Override
     public MenuItem findById(Long id) {
         return menuItemRepository.findById(id).orElse(null);
     }

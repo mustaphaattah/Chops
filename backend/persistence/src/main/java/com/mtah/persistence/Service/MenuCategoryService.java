@@ -16,14 +16,8 @@ public class MenuCategoryService extends EntityService<MenuCategory, Long> {
         this.menuCategoryRepository = menuCategoryRepository;
     }
 
-    @Override
-    public List<MenuCategory> findAll() {
-        return menuCategoryRepository.findAll();
-    }
-
-    @Override
-    public MenuCategory findById(Long id) {
-        return menuCategoryRepository.findById(id).orElse(null);
+    public List<MenuCategory> findAllByMenuId(long menuId) {
+        return menuCategoryRepository.findAllByMenuId(menuId);
     }
 
     @Override

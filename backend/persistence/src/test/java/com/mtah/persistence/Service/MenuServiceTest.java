@@ -36,10 +36,10 @@ class MenuServiceTest {
     }
 
     @Test
-    void findById() {
+    void findByChefId() {
         when(menuRepository.findByChefId(anyLong())).thenReturn(Optional.of(menu));
 
-        Menu returnedMenu = menuService.findById(2L);
+        Menu returnedMenu = menuService.findByChefId(2L);
 
         verify(menuRepository, times(1)).findByChefId(anyLong());
     }

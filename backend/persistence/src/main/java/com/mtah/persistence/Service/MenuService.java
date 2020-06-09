@@ -13,8 +13,7 @@ public class MenuService extends EntityService<Menu, Long> {
         this.menuRepository = menuRepository;
     }
 
-    @Override
-    public Menu findById(Long id) {
+    public Menu findByChefId(Long id) {
         return menuRepository.findByChefId(id).orElse(null);
     }
 

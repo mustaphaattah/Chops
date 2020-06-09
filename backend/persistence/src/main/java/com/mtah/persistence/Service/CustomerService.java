@@ -15,12 +15,10 @@ public class CustomerService extends EntityService<Customer, Long>{
         this.customerRepository = cr;
     }
 
-    @Override
     public List<Customer> findAll() {
         return customerRepository.findAll();
     }
 
-    @Override
     public Customer findById(Long anId) {
         return customerRepository.findById(anId).orElse(null);
     }

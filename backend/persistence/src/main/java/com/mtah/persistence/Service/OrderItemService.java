@@ -15,12 +15,10 @@ public class OrderItemService extends EntityService<OrderItem, Long> {
         this.orderItemRepository = orderItemRepository;
     }
 
-    @Override
     public List<OrderItem> findAll() {
         return orderItemRepository.findAll();
     }
 
-    @Override
     public OrderItem findById(Long id) {
         return orderItemRepository.findById(id).orElse(null);
     }
