@@ -5,6 +5,7 @@ import com.mtah.model.Chef;
 import com.mtah.model.Customer;
 import com.mtah.model.Status;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "orders")
+@Builder
 public class Order extends BaseEntity {
 
     @ManyToOne

@@ -15,8 +15,8 @@ public class OrderService extends EntityService<Order, Long> {
         this.orderRepository = orderRepository;
     }
 
-    public List<Order> findAll() {
-        return orderRepository.findAll();
+    public List<Order> findAllByCustomerId(Long customerId) {
+        return orderRepository.findAllByCustomerId(customerId);
     }
 
     public Order findById(Long id) {
