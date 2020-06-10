@@ -15,8 +15,8 @@ public class MenuItemService extends EntityService<MenuItem, Long> {
         this.menuItemRepository = menuItemRepository;
     }
 
-    public List<MenuItem> findAll() {
-        return menuItemRepository.findAll();
+    public List<MenuItem> findAllByCategoryId(long categoryId) {
+        return menuItemRepository.findAllByCategoryId(categoryId);
     }
 
     public MenuItem findById(Long id) {
