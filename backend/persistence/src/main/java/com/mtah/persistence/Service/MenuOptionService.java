@@ -15,12 +15,8 @@ public class MenuOptionService extends EntityService<MenuOption, Long> {
         this.menuOptionRepository = menuOptionRepository;
     }
 
-    public List<MenuOption> findAll() {
-        return menuOptionRepository.findAll();
-    }
-
-    public MenuOption findById(Long id) {
-        return menuOptionRepository.findById(id).orElse(null);
+    public List<MenuOption> findAllByMenuItemId(Long menuItemId) {
+        return menuOptionRepository.findAllByMenuItemId(menuItemId);
     }
 
     @Override
