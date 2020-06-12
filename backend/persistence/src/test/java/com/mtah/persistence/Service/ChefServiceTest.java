@@ -44,18 +44,20 @@ class ChefServiceTest {
         chefService.findAll();
 
         verify(chefRepository).findAll();
+        assertEquals(chefs.size(), 1);
     }
 
     @Test
     void findById(){
         when(chefRepository.findById(anyLong())).thenReturn(Optional.of(chef));
 
-        chefService.findById(4L);
+        Chef foundChef = chefService.findById(4L);
         verify(chefRepository).findById(anyLong());
+        assertEquals(chef.getId(), foundChef.getId());
     }
 
     @Test
-    void delete(){
+    void deleteById(){
         chefService.deleteById(4l);
         verify(chefRepository).deleteById(anyLong());
     }
