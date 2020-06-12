@@ -44,7 +44,7 @@ class MenuCategoryServiceTest {
 
         when(menuCategoryRepository.findAllByMenuId(anyLong())).thenReturn(menuCategories);
 
-        List<MenuCategory> menuCategoryList = menuCategoryService.findAllByMenuId(2L);
+        List<MenuCategory> menuCategoryList = menuCategoryService.findAllByMenuId(3L);
 
         verify(menuCategoryRepository, times(1)).findAllByMenuId(anyLong());
         assertEquals(menuCategoryList.size(), 1);
