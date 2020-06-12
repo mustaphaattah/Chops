@@ -49,7 +49,8 @@ class ChefServiceTest {
 
     @Test
     void findById(){
-        when(chefRepository.findById(anyLong())).thenReturn(Optional.of(chef));
+        when(chefRepository.findById(anyLong()))
+                .thenReturn(Optional.of(chef));
 
         Chef foundChef = chefService.findById(4L);
         verify(chefRepository).findById(anyLong());

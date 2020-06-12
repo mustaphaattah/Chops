@@ -17,7 +17,6 @@ import javax.persistence.ManyToOne;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class OrderItem extends Item {
 
     @ManyToOne

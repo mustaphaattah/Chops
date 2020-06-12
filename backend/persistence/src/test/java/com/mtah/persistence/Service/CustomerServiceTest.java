@@ -48,7 +48,8 @@ class CustomerServiceTest {
 
     @Test
     void findById() {
-        when(customerRepository.findById(anyLong())).thenReturn(Optional.of(customer));
+        when(customerRepository.findById(anyLong()))
+                .thenReturn(Optional.of(customer));
 
         Customer foundCustomer =  customerService.findById(4L);
         verify(customerRepository).findById(anyLong());
@@ -59,17 +60,18 @@ class CustomerServiceTest {
     @Test
     void deleteById() {
         customerService.deleteById(8L);
-        verify(customerRepository, times(1)).deleteById(anyLong());
+        verify(customerRepository, times(1))
+                .deleteById(anyLong());
     }
 
     @Test
     void save() {
-        when(customerRepository.save(any(Customer.class))).thenReturn(customer);
+        when(customerRepository.save(any(Customer.class)))
+                .thenReturn(customer);
 
         Customer savedCustomer = customerService.save(customer);
         verify(customerRepository).save(any(Customer.class));
 
         assertEquals(customer.getId(), savedCustomer.getId());
-
     }
 }
