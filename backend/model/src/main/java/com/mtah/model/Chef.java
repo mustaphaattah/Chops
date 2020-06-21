@@ -3,6 +3,7 @@ package com.mtah.model;
 import com.mtah.model.Menu.Menu;
 import com.mtah.model.Order.Order;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.List;
 
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
