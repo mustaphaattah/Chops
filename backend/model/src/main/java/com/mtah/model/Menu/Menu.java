@@ -7,21 +7,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.List;
 
-@Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Entity
 public class Menu extends BaseEntity {
 
     @OneToOne(mappedBy = "menu")
     private Chef chef;
 
-    @OneToMany(mappedBy = "menu")
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<MenuCategory> categories;
 }

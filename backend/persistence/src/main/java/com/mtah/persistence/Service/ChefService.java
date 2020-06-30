@@ -11,6 +11,7 @@ public class ChefService extends EntityService<Chef, Long> {
 
     private final ChefRepository chefRepository;
 
+
     public ChefService(ChefRepository cr) {
         this.chefRepository = cr;
     }

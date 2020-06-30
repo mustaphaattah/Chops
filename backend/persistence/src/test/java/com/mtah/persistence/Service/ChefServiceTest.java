@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
@@ -41,8 +42,9 @@ class ChefServiceTest {
         chefs.add(chef);
 
         when(chefRepository.findAll()).thenReturn(chefs);
-        chefService.findAll();
+        List<Chef> chefList = chefService.findAll();
 
+        assertNotNull(chefList);
         verify(chefRepository).findAll();
         assertEquals(chefs.size(), 1);
     }
@@ -59,7 +61,7 @@ class ChefServiceTest {
 
     @Test
     void deleteById(){
-        chefService.deleteById(4l);
+        chefService.deleteById(4L);
         verify(chefRepository).deleteById(anyLong());
     }
 
