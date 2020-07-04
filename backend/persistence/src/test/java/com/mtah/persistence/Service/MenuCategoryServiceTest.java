@@ -50,7 +50,7 @@ class MenuCategoryServiceTest {
     @Test
     void deleteById() {
 
-        menuCategoryService.deleteById(4L);
+        menuCategoryService.deleteById(anyLong(), anyLong());
         verify(menuCategoryRepository, times(1)).deleteById(anyLong());
     }
 

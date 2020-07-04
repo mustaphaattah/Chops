@@ -50,14 +50,24 @@ public class MenuController {
         return new ResponseEntity<>(menu, HttpStatus.OK);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<?> updateMenu(@PathVariable Long id, 
+                                        @Valid @RequestBody Menu menu){
+
+        Menu updatedMenu = menuService.findByChefId(id);
+        updatedMenu.setCategories(menu.getCategories());
+
+        return new ResponseEntity<>(updatedMenu, HttpStatus.OK);
+    }
+    
+
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteMenu(@PathVariable Long id){
 
         Menu deletedMenu = menuService.findByChefId(id);
         menuService.deleteById(deletedMenu.getId());
 
-        return new ResponseEntity<>(deletedMenu, HttpStatus.OK
-        );
+        return new ResponseEntity<>(deletedMenu, HttpStatus.OK);
     }
 
 }
