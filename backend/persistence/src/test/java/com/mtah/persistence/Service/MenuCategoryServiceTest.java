@@ -30,10 +30,7 @@ class MenuCategoryServiceTest {
 
     @BeforeEach
     void setUp() {
-       menuCategory = MenuCategory
-        .builder()
-        .build();
-
+       menuCategory = new MenuCategory();
        menuCategory.setId(id);
     }
 
@@ -57,11 +54,12 @@ class MenuCategoryServiceTest {
         verify(menuCategoryRepository, times(1)).deleteById(anyLong());
     }
 
+
     @Test
     void save() {
         when(menuCategoryRepository.save(any(MenuCategory.class))).thenReturn(menuCategory);
 
-        MenuCategory menuCat = menuCategoryService.save(new MenuCategory());
+        MenuCategory menuCat = menuCategoryService.save(new MenuCategory(), anyLong());
         verify(menuCategoryRepository, times(1)).save(any(MenuCategory.class));
         assertEquals(menuCat.getId(), menuCategory.getId());
     }

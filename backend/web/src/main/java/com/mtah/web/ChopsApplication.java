@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(scanBasePackages = {"com"})
-@EntityScan(basePackages = {"com"})
-@EnableJpaRepositories(basePackages = {"com"})
+@SpringBootApplication(scanBasePackages = {"com.mtah"})
+@EntityScan(basePackages = {"com.mtah"})
+@EnableJpaRepositories(basePackages = {"com.mtah"})
 public class ChopsApplication {
 
     public static void main(String[] args) {

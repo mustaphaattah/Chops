@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MenuOptionService extends EntityService<MenuOption, Long> {
+public class MenuOptionService{
 
     private final MenuOptionRepository menuOptionRepository;
 
@@ -19,12 +19,10 @@ public class MenuOptionService extends EntityService<MenuOption, Long> {
         return menuOptionRepository.findAllByMenuItemId(menuItemId);
     }
 
-    @Override
     public void deleteById(Long id) {
         menuOptionRepository.deleteById(id);
     }
 
-    @Override
     public MenuOption save(MenuOption menuOption) {
         return menuOptionRepository.save(menuOption);
     }

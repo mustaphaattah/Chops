@@ -1,6 +1,6 @@
 # MenuCategory
 
-- Create a MenuCategory
+- Create a MenuCategoryd
     - POST /chefs/:chefId/menu/:menuId/create-category
 - Update a MenuCategory
     - PUT /chefs/:chefId/menu/:menuId/category/:categoryId

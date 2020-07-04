@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CustomerService extends EntityService<Customer, Long>{
+public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
@@ -23,12 +23,10 @@ public class CustomerService extends EntityService<Customer, Long>{
         return customerRepository.findById(anId).orElse(null);
     }
 
-    @Override
     public void deleteById(Long anId) {
         customerRepository.deleteById(anId);
     }
 
-    @Override
     public Customer save(Customer customer) {
         return customerRepository.save(customer);
     }

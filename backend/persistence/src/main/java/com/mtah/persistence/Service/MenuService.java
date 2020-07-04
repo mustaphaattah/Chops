@@ -4,10 +4,8 @@ import com.mtah.model.Menu.Menu;
 import com.mtah.persistence.Repository.MenuRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
-public class MenuService extends EntityService<Menu, Long> {
+public class MenuService {
 
     private final MenuRepository menuRepository;
 
@@ -19,12 +17,10 @@ public class MenuService extends EntityService<Menu, Long> {
         return menuRepository.findByChefId(id).orElse(null);
     }
 
-    @Override
     public void deleteById(Long id) {
         menuRepository.deleteById(id);
     }
 
-    @Override
     public Menu save(Menu menu) {
         return menuRepository.save(menu);
     }

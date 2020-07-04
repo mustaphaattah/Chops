@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ChefService extends EntityService<Chef, Long> {
+public class ChefService {
 
     private final ChefRepository chefRepository;
 
@@ -24,12 +24,10 @@ public class ChefService extends EntityService<Chef, Long> {
         return chefRepository.findAll();
     }
 
-    @Override
     public void deleteById(Long id) {
         chefRepository.deleteById(id);
     }
 
-    @Override
     public Chef save(Chef chef) {
         return chefRepository.save(chef);
     }
