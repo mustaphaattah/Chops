@@ -47,20 +47,4 @@ class MenuCategoryServiceTest {
         assertEquals(menuCategoryList.size(), 1);
     }
 
-    @Test
-    void deleteById() {
-
-        menuCategoryService.deleteById(anyLong(), anyLong());
-        verify(menuCategoryRepository, times(1)).deleteById(anyLong());
-    }
-
-
-    @Test
-    void save() {
-        when(menuCategoryRepository.save(any(MenuCategory.class))).thenReturn(menuCategory);
-
-        MenuCategory menuCat = menuCategoryService.save(new MenuCategory(), anyLong());
-        verify(menuCategoryRepository, times(1)).save(any(MenuCategory.class));
-        assertEquals(menuCat.getId(), menuCategory.getId());
-    }
 }

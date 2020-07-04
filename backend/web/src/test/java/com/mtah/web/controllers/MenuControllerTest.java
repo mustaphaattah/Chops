@@ -3,10 +3,7 @@ package com.mtah.web.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mtah.model.Chef;
 import com.mtah.model.Menu.Menu;
-<<<<<<< HEAD
-=======
 import com.mtah.model.Menu.MenuCategory;
->>>>>>> 6e74e8d8a6453ef6997102b5f2e7825cc6dab555
 import com.mtah.persistence.Service.ChefService;
 import com.mtah.persistence.Service.MenuService;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,15 +16,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-<<<<<<< HEAD
-import static org.mockito.ArgumentMatchers.anyLong;
-=======
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
->>>>>>> 6e74e8d8a6453ef6997102b5f2e7825cc6dab555
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
