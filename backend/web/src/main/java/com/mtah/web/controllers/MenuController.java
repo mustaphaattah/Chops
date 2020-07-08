@@ -9,62 +9,43 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 
 @RestController
-@RequestMapping("/chefs/{id}/menu")
+@RequestMapping("/chefs/{chefId}/menu")
 public class MenuController {
 
-    private final ChefService chefService;
     private final MenuService menuService;
 
-    public MenuController(ChefService chefService, MenuService menuService) {
-        this.chefService = chefService;
+    public MenuController(MenuService menuService) {
         this.menuService = menuService;
     }
 
-    /*
-     *
-     *
-    */
-    @PostMapping("/create")
-    public ResponseEntity<?> createMenu(@PathVariable Long id,
+    @PostMapping({"", "/"})
+    public ResponseEntity<?> createMenu(@PathVariable Long chefId,
                                         @Valid @RequestBody Menu menu){
-
-        Chef chef = chefService.findById(id);
-        menu = new Menu();
-        chef.setMenu(menu);
-        Menu savedMenu = menuService.save(menu);
-        return new ResponseEntity<>(savedMenu, HttpStatus.CREATED);
+        Menu createdMenu = menuService.create(chefId, menu);
+        return new ResponseEntity<>(createdMenu, HttpStatus.CREATED);
     }
 
-    /*
-    * Gets the menu of a chef using id
-    *
-    * Perhaps this be a chef get req?
-    * */
     @GetMapping({"", "/"})
-    public  ResponseEntity<?> fetchMenu(@PathVariable Long id){
-
-        Menu menu = menuService.findByChefId(id);
+    public  ResponseEntity<?> fetchMenu(@PathVariable Long chefId){
+        Menu menu = menuService.findByChefId(chefId);
         return new ResponseEntity<>(menu, HttpStatus.OK);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<?> updateMenu(@PathVariable Long id, 
-                                        @Valid @RequestBody Menu menu){
-
-        Menu updatedMenu = menuService.findByChefId(id);
-        updatedMenu.setCategories(menu.getCategories());
-
+    @PatchMapping({"", "/"})
+    public ResponseEntity<?> updateMenu(@PathVariable Long chefId,
+                                        @Valid @RequestBody Map<String, Object> updates){
+        Menu updatedMenu = menuService.update(chefId, updates);
         return new ResponseEntity<>(updatedMenu, HttpStatus.OK);
     }
     
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteMenu(@PathVariable Long id){
-
-        Menu deletedMenu = menuService.findByChefId(id);
+    @DeleteMapping({"", "/"})
+    public ResponseEntity<?> deleteMenu(@PathVariable Long chefId){
+        Menu deletedMenu = menuService.findByChefId(chefId);
         menuService.deleteById(deletedMenu.getId());
 
         return new ResponseEntity<>(deletedMenu, HttpStatus.OK);

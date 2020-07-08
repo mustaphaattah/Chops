@@ -1,6 +1,7 @@
 package com.mtah.web.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.mtah.model.Chef;
 import com.mtah.model.Menu.Menu;
 import com.mtah.model.Menu.MenuCategory;
@@ -17,7 +18,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -31,9 +34,6 @@ class MenuControllerTest {
     @Mock
     MenuService menuService;
 
-    @Mock
-    ChefService chefService;
-
     @InjectMocks
     MenuController controller;
 
@@ -43,6 +43,7 @@ class MenuControllerTest {
     Menu menu;
     List<MenuCategory> categories;
     MenuCategory sides;
+    Gson gson;
 
     final Long aChefId = 1L;
     final Long aMenuId = 2L;
@@ -53,6 +54,7 @@ class MenuControllerTest {
         sides = MenuCategory
                 .builder()
                 .build();
+        sides.setName("Sides");
         sides.setId(aCategoryId);
 
         categories = new ArrayList<>();
@@ -71,6 +73,8 @@ class MenuControllerTest {
         menu.setChef(mafuzzy);
         menu.setCategories(categories);
 
+        gson = new Gson();
+
         mockMvc = MockMvcBuilders
                 .standaloneSetup(controller)
                 .build();
@@ -78,20 +82,18 @@ class MenuControllerTest {
 
     @Test
     void createMenuTest() throws Exception{
-        when(chefService.findById(anyLong())).thenReturn(mafuzzy);
-        when(menuService.save(any(Menu.class))).thenReturn(menu);
+        when(menuService.create(anyLong() ,any(Menu.class))).thenReturn(menu);
 
-        mockMvc.perform(post("/chefs/{id}/menu/create", aChefId)
+        mockMvc.perform(post("/chefs/{id}/menu", aChefId)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(menu)))
+                .content(gson.toJson(menu)))
 
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id").value(menu.getId()));
 
-        verify(chefService).findById(anyLong());
-        verify(menuService).save(any(Menu.class));
+        verify(menuService).create(anyLong() ,any(Menu.class));
     }
 
     @Test
@@ -108,41 +110,33 @@ class MenuControllerTest {
 
     @Test
     void updateMenuTest() throws Exception{
-        when(menuService.findByChefId(anyLong())).thenReturn(menu);
+        when(menuService.update(anyLong(), anyMap())).thenReturn(menu);
 
-        mockMvc.perform(put("/chefs/{id}/menu/update", aChefId)
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("categories", sides);
+
+        mockMvc.perform(patch("/chefs/{id}/menu/", aChefId)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(menu)))
+                .content(gson.toJson(updates)))
 
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id").value(menu.getId()));
 
-        verify(menuService).findByChefId(anyLong());
+        verify(menuService).update(anyLong(), anyMap());
     }
 
     @Test
     void deleteMenuTest() throws Exception{
         when(menuService.findByChefId(anyLong())).thenReturn(menu);
 
-        mockMvc.perform(delete("/chefs/{id}/menu/delete", aChefId))
+        mockMvc.perform(delete("/chefs/{id}/menu/", aChefId))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id").value(menu.getId()));
 
         verify(menuService).findByChefId(anyLong());
         verify(menuService, times(1)).deleteById(anyLong());
-    }
-
-    /*
-     * converts a Java object into JSON representation
-     */
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

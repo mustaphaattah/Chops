@@ -34,6 +34,7 @@ class ChefServiceTest {
     void setUp() {
         chef = Chef.builder().build();
         chef.setId(id);
+        chef.setUsername("nursh");
     }
 
     @Test
@@ -58,6 +59,21 @@ class ChefServiceTest {
         verify(chefRepository).findById(anyLong());
         assertEquals(chef.getId(), foundChef.getId());
     }
+
+    @Test
+    void findByName(){
+        List<Chef> chefs = new ArrayList<>();
+        chefs.add(chef);
+
+        when(chefRepository.findAll()).thenReturn(chefs);
+
+        List<Chef> chefList = chefService.findByName(chef.getUsername());
+
+        assertNotNull(chefList);
+        verify(chefRepository).findAll();
+        assertEquals(chefs.size(), 1);
+    }
+
 
     @Test
     void deleteById(){
