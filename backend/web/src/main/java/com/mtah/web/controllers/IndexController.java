@@ -10,7 +10,7 @@ public class IndexController {
 
     @RequestMapping({"", "/", "/index", "/index.html"})
     public ResponseEntity<?> index(){
-        return new ResponseEntity<>("index", HttpStatus.OK);
+        return new ResponseEntity<>("Index", HttpStatus.OK);
     }
 
 }

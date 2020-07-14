@@ -24,10 +24,14 @@ public class ChefController {
         this.chefService = chefService;
     }
 
-    /*
-     * Creating a chef creates a new empty menu for the chef as well
-     */
-    @PostMapping("/create-chef")
+    @GetMapping({"", "/"})
+    public ResponseEntity<?> findAllChefs(){
+        List<Chef> chefs = chefService.findAll();
+        //List<String> jsonChefs = chefService.listAsJson(chefs);
+        return new ResponseEntity<>(chefs, HttpStatus.OK);
+    }
+
+    @PostMapping({"", "/"})
     public ResponseEntity<?> createChef(@Valid @RequestBody Chef chef) {
         Chef createdChef = chefService.save(chef);
         return new ResponseEntity<>(createdChef, HttpStatus.CREATED);
@@ -52,13 +56,6 @@ public class ChefController {
     public ResponseEntity<?> findChef(@PathVariable Long id){
         Chef chef = chefService.findById(id);
         return new ResponseEntity<>(chef, HttpStatus.OK);
-    }
-
-    @GetMapping({"", "/"})
-    public ResponseEntity<?> findAllChefs(){
-        List<Chef> chefs = chefService.findAll();
-        List<String> jsonChefs = chefService.listAsJson(chefs);
-        return new ResponseEntity<>(chefs, HttpStatus.OK);
     }
 
     @GetMapping("/search")
